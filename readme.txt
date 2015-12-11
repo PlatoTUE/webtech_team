@@ -62,13 +62,16 @@ the Move.whites_turn denotes who's turn it is
 
 
 ## Processing
-The ai's are uploaded as .java files implementing the DraughtsPlayer class.
-This is then turned into an executable .jar file with input and ouput parameters that manages the calculation
-someting like: ai_id.jar --checkers_board [[1,1,4],[0,1,5],[0,0,18]] --turn 1 --output folder/ai_id.json
-We intially use the framework from AI to initiate the calculation and check the result.
+The ai's are uploaded as .java files implementing the 's2id90_java_source_files/game/Player.java' class.
+This is then turned into an executable .jar file on the server.
+This jar file is passed to our_libary.jar (that still needs to be desinged) who runs the ai.
+our_libary.jar is called like: java our_libary.jar --ai uploaded_file.jar --gamestate '[[1,1,4],[0,1,5],[0,0,18]]' --turn 1 --output folder/ai_id.json --maxtime 10s
+We want to use the framework from AI to initiate the calculation and check if the resulting move is valid or not.
 
-As soon as an user want the ai to calculate some move an `Move` instance is created and the java jar is called in a seperate process. 
-When the process is finished it writes the ouput to some file (/output/ai_id.json)
+As soon as an user wants the ai to calculate some move:
+- an `Move` instance is created in the database
+- the our_libary.jar is called with the specific ai's jar file and an bord definition with turn, in a seperate process.
+- then the our_libary.jar should print the result to some text file when it is done.
 Then when a GET /move is issued it simply checks if the file is there or not and returns the contents.
 The estimation is given based on the previous calls.
 
