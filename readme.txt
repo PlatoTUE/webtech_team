@@ -44,7 +44,7 @@ params: ai_id (int), result_id (int)
 200 result (JSON): {'checkers_board': [[stone1], [stone2], ...]}
 202 result (JSON): {"estimated_completion": "<datetime string>"}
 response: 200 Ok, 202 Accepted, 404 Ai not found, ?410 Gone
-comments: We return an array so that we can easily implement an fair AI. After this we should make something that checks if the moves are valid or not.
+comments: We return an array so that we can easily implement a fair AI that cannot make an illegal move. After this we should make something that checks if the moves are valid or not.
 
 ## Database:
 pk stands for primary key and is just an integer used by django.
@@ -64,7 +64,7 @@ the Move.whites_turn denotes who's turn it is
 ## Processing
 The ai's are uploaded as .java files implementing the 's2id90_java_source_files/game/Player.java' class.
 This is then turned into an executable .jar file on the server.
-This jar file is passed to our_libary.jar (that still needs to be desinged) who runs the ai.
+This jar file is passed to our_libary.jar (that still needs to be designed) who runs the ai.
 our_libary.jar is called like: java our_libary.jar --ai uploaded_file.jar --gamestate '[[1,1,4],[0,1,5],[0,0,18]]' --turn 1 --output folder/ai_id.json --maxtime 10s
 We want to use the framework from AI to initiate the calculation and check if the resulting move is valid or not.
 
