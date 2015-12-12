@@ -69,7 +69,7 @@ our_libary.jar is called like: java our_libary.jar --ai uploaded_file.jar --game
 We want to use the framework from AI to initiate the calculation and check if the resulting move is valid or not.
 
 As soon as an user wants the ai to calculate some move:
-- an `Move` instance is created in the database
+- a `Move` instance is created in the database
 - the our_libary.jar is called with the specific ai's jar file and an bord definition with turn, in a seperate process.
 - then the our_libary.jar should print the result to some text file when it is done.
 Then when a GET /move is issued it simply checks if the file is there or not and returns the contents.
@@ -78,7 +78,7 @@ The estimation is given based on the previous calls.
 
 ## Front-end
 - Login view. Set username and password
-- Loggedin view. See your API's. And maby their statistics
+- Loggedin view. See your API's. And maybe their statistics
 - Play game setup view. Choose two AI's or play against an AI. ?Define who may start
 - Game view. jQuery does API requests and plays the game. An simple table provides the field
 - Homepage view. Explanation and overview of all the views.
